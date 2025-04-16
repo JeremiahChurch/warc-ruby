@@ -7,7 +7,7 @@ module Warc
     warc = path.match(/.*\.warc$/)
     
     if (gzipped || warc)
-      fh = ::File.exists?(path) ? ::File.new(path,mode) : path
+      fh = ::File.exist?(path) ? ::File.new(path,mode) : path
       return Stream::Gzip.new(fh) if gzipped
       return Stream::Plain.new(fh) if warc
     else
